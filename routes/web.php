@@ -50,8 +50,17 @@ Route::group(['middleware' => 'committee'], function () {
       Route::get('/committee/edit/{id}', 'projectController@committeeEditProjecteDetail');
       Route::get('/committee/{id}/{status}', 'projectController@committeeApprove');
       Route::post('/committee/updateProject', 'projectController@committeeUpdateProject');
-     
+
 });
+
+
+// TODO add middleware hardenning here
+Route::get('/api/v1/projects', 'ProjectController@index');
+Route::get('/api/v1/projects/{projectId}', 'ProjectController@view');
+Route::get('/api/v1/projects/{projectId}/committees', 'ProjectCommitteeController@all');
+Route::get('/api/v1/projects/{projectId}/committees/{committeeId}', 'ProjectCommitteeController@one');
+Route::post('/api/v1/projects/{projectId}/committees', 'ProjectCommitteeController@create');
+Route::delete('/api/v1/projects/{projectId}/committees/{committeeId}', 'ProjectCommitteeController@delete');
 
 
 

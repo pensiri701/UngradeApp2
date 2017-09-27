@@ -8,10 +8,17 @@ use DB;
 class project extends Model {
 
   protected $table = 'project'; // กำหนดชื่อของตารางที่ต้องการเรียกใช้
+  protected $primaryKey = 'pid';
+  // TODO check this, does someone use it?
   public static $key = 'pid';
 
+// FIXME rename this to committees
 public  function committee(){
   return $this->hasMany('App\committee','pid');
+}
+
+public function committees(){
+  return $this->hasMany('App\Model\committee','pid');
 }
 
 public  function co_project(){

@@ -11,9 +11,23 @@ use App\Http\Controllers\Controller;
 use DB;
 use Input;
 
-
+// FIXME Rename this to ProjectController
 class projectController extends Controller
 {
+  public function index()
+  {
+    $projects = Project::all();
+    return $projects;
+  }
+
+  /**
+   * $projectId integer project id
+   **/
+  public function view($projectId)
+  {
+    $project = Project::findOrFail($projectId);
+    return $project;
+  }
   /* committee */
   public function indexCommittee()
   {

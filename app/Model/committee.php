@@ -7,10 +7,14 @@ use DB;
 class committee extends Model {
 
   protected $table = 'committee'; // กำหนดชื่อของตารางที่ต้องการเรียกใช้
-  public static $key = 'cid';
+  protected $primaryKey = 'cid';
 
   public function staff(){
-    return $this->belongTo('App\staff','staff_id');
+    return $this->belongsTo('App\Model\staff','staff_id');
+  }
+
+  public function staffs (){
+    return $this->belongsTo('App\Model\staff','staff_id');
   }
 
   public function project(){

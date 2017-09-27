@@ -9,7 +9,7 @@ use DB;
 Class staff extends Model{
 
   protected $table = 'staff'; // กำหนดชื่อของตารางที่ต้องการเรียกใช้
-  public static $key = 'staff_id';
+  protected $primaryKey = 'staff_id';
 
   public function committee(){
     return $this->hasMany('App\committee','staff_id');
