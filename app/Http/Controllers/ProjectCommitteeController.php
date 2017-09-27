@@ -58,13 +58,13 @@ class ProjectCommitteeController extends Controller
         $staffId = $request->input('staff_id');
         $type = $request->input('type');
 
-        $success = DB::table('committee')->insert([
+        $isSuccess = DB::table('committee')->insert([
             'pid' => $projectId,
             'staff_id' => $staffId,
             'type' => $type
         ]);
 
-        return $success;
+        return ['success' => $isSuccess];
 
     }
 
@@ -74,12 +74,12 @@ class ProjectCommitteeController extends Controller
      */
      public function delete($projectId, $committeeId)
      {
-         $success = DB::table('committee')
+         $isSuccess = DB::table('committee')
             ->where('pid', $projectId)
             ->where('cid', $committeeId)
             ->delete();
 
-        return $success;
+        return ['success' => $isSuccess];
      }
 
 }
